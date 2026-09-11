@@ -1,61 +1,105 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kizik Hands Free Shoes</title><link rel="stylesheet" href="styles.css"></head><body>
-<header class="top"><div class="nav"><div><div class="logo">kizik</div><div class="tag">HANDS FREE SHOES</div></div><div class="navlinks"><button class="on" onclick="setCat('all',this)">全部</button><button onclick="setCat('men',this)">男鞋</button><button onclick="setCat('women',this)">女鞋</button><button onclick="setCat('kids',this)">兒童鞋</button><button onclick="setSeries('ATH',this)">雅典娜2.0</button><button onclick="setSeries('FRE',this)">跑鞋</button><button onclick="setSeries('MON',this)">摩納哥</button><button onclick="setSeries('SIE',this)">西恩納</button></div></div></header>
-<section class="hero"><img class="heroMain" src="assets/brand/hero-main.jpg" alt="Kizik Hands-Free Effortless"></section>
-<section class="section"><div class="secHead"><div><h2>商品選購</h2><div class="productCount">共 22 款商品</div></div><span>點選 US 尺寸，同步顯示對應 CM</span></div><div id="grid" class="grid"></div></section>
-<section class="section"><div class="secHead"><h2>尺寸參考</h2><span>以提供的 Kizik 尺寸表為基準</span></div><div class="sizeBox"><img src="assets/size-adult.png"><img src="assets/size-kids.png"></div>
-<div class="kidsSizeUpdate">
-  <h3>童鞋尺寸對照（更新）</h3>
-  <div class="kidsSizeGrid">
-    <span>10C<br><b>16.5 cm</b></span>
-    <span>10.5C<br><b>17 cm</b></span>
-    <span>11C<br><b>17.5 cm</b></span>
-    <span>12C<br><b>18.5 cm</b></span>
-    <span>13C<br><b>19 cm</b></span>
-    <span>1Y<br><b>20 cm</b></span>
-    <span>2Y<br><b>21 cm</b></span>
-    <span>3Y<br><b>22 cm</b></span>
-    <span>3.5Y<br><b>22 cm</b></span>
-    <span>4Y<br><b>22.5 cm</b></span>
-    <span>4.5Y<br><b>23 cm</b></span>
-    <span>5Y<br><b>24 cm</b></span>
-  </div>
-</div>
-</section>
-<section class="section patentSection"><div class="secHead"><div><h2>HFL 高回彈科技</h2><div class="productCount">HandsFree Labs｜3 大科技</div></div></div><div class="patentBox"><img src="assets/brand/hfl-patent-tech.png" alt="HFL 高回彈 3 大科技專利技術圖"></div></section><footer>M 開頭＝男鞋｜W 開頭＝女鞋｜商品圖依貨號配對｜US 尺寸同步顯示 CM</footer><button class="drawer" onclick="openCart()">訂單 <b id="cartCount">0</b></button>
-<div class="modal" id="cartModal" onclick="closeCart(event)"><div class="sheet" onclick="event.stopPropagation()"><h2>我的訂單</h2><div id="cartItems"></div><div class="total" id="total">$0</div><div class="form">
-<input class="full customerName" id="customerName" placeholder="客戶名稱（已有客戶可只填這一欄）">
-<div class="orLine full"><span>或</span></div>
-<input id="name" placeholder="姓名"><input id="phone" placeholder="電話">
-<input class="full" id="address" placeholder="地址（選填）">
-<input class="full" id="note" placeholder="備註（選填）">
-</div><br><button class="checkout" onclick="checkout()">送出訂單</button></div></div><script src="app.js"></script>
-
-<section class="section" style="margin-top:40px">
-  <div class="secHead">
-    <div>
-      <h2>KIZIK 影片</h2>
-      <div class="productCount">Hands-Free. Effortless.</div>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Kizik Hands Free Shoes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="nav">
+    <div><div class="logo">kizik</div><div class="tag">HANDS FREE SHOES</div></div>
+    <div class="navlinks">
+      <button class="on" onclick="setCat('all',this)">全部</button>
+      <button onclick="setCat('men',this)">男鞋</button>
+      <button onclick="setCat('women',this)">女鞋</button>
+      <button onclick="setCat('kids',this)">兒童鞋</button>
+      <button onclick="setSeries('ATH',this)">雅典娜2.0</button>
+      <button onclick="setSeries('FRE',this)">跑鞋</button>
+      <button onclick="setSeries('MON',this)">摩納哥</button>
+      <button onclick="setSeries('SIE',this)">西恩納</button>
     </div>
   </div>
-  <div style="max-width:960px;margin:0 auto;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 10px 30px rgba(0,0,0,.08)">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/UcdqNQ9qpVU"
-      title="KIZIK YouTube 影片"
-      style="width:100%;height:100%;border:0;display:block"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+</header>
+
+<section class="hero"><img class="heroMain" src="assets/brand/hero-main.jpg" alt="Kizik Hands-Free Effortless"></section>
+
+<section class="activitySection">
+  <div class="activityCard" id="activityCard">
+    <div>
+      <div class="activityEyebrow">CURRENT ACTIVITY · 目前活動</div>
+      <div class="activityTitle" id="activityTitle">活動訊息</div>
+      <div class="activityNote" id="activityNote">目前無特別活動。</div>
+    </div>
+    <div class="activityDiscount" id="activityDiscount" hidden></div>
+  </div>
+  <div class="sourceBar" id="sourceBar">
+    <b id="sourceTitle">一般客戶訂購</b>
+    <span id="sourceHint">一般訂購入口</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="secHead">
+    <div><h2>商品選購</h2><div class="productCount" id="productCount">商品載入中</div></div>
+    <span>點選 US 尺寸，同步顯示對應 CM</span>
+  </div>
+  <div id="grid" class="grid"></div>
+</section>
+
+<section class="section">
+  <div class="secHead"><h2>尺寸參考</h2><span>以提供的 Kizik 尺寸表為基準</span></div>
+  <div class="sizeBox"><img src="assets/size-adult.png"><img src="assets/size-kids.png"></div>
+  <div class="kidsSizeUpdate">
+    <h3>童鞋尺寸對照（更新）</h3>
+    <div class="kidsSizeGrid">
+      <span>10C<br><b>16.5 cm</b></span><span>10.5C<br><b>17 cm</b></span><span>11C<br><b>17.5 cm</b></span>
+      <span>12C<br><b>18.5 cm</b></span><span>13C<br><b>19 cm</b></span><span>1Y<br><b>20 cm</b></span>
+      <span>2Y<br><b>21 cm</b></span><span>3Y<br><b>22 cm</b></span><span>3.5Y<br><b>22 cm</b></span>
+      <span>4Y<br><b>22.5 cm</b></span><span>4.5Y<br><b>23 cm</b></span><span>5Y<br><b>24 cm</b></span>
+    </div>
+  </div>
+</section>
+
+<section class="section patentSection">
+  <div class="secHead"><div><h2>HFL 高回彈科技</h2><div class="productCount">HandsFree Labs｜3 大科技</div></div></div>
+  <div class="patentBox"><img src="assets/brand/hfl-patent-tech.png" alt="HFL 高回彈 3 大科技專利技術圖"></div>
+</section>
+
+<div class="guideFooter">M 開頭＝男鞋｜W 開頭＝女鞋｜商品圖依貨號配對｜US 尺寸同步顯示 CM</div>
+
+<section class="section videoSection">
+  <div class="secHead"><div><h2>KIZIK 影片</h2><div class="productCount">Hands-Free. Effortless.</div></div></div>
+  <div class="videoBox">
+    <iframe src="https://www.youtube.com/embed/UcdqNQ9qpVU?rel=0" title="KIZIK YouTube 影片" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
 </section>
 
 <footer class="companyFooter">
   <div class="companyFooterInner">
     <div class="companyName">伯鑫國際貿易有限公司</div>
-    <div class="companyInfo">
-      <span>電話｜04-2524-4025</span>
-      <span>地址｜429 台中市神岡區大社街123號</span>
-    </div>
+    <div class="companyInfo"><span>電話｜04-2524-4025</span><span>地址｜429 台中市神岡區大社街123號</span></div>
   </div>
 </footer>
 
-</body></html>
+<button class="drawer" onclick="openCart()"><span>查看訂單</span><b id="cartCount">0</b></button>
+<div class="modal" id="cartModal" onclick="closeCart(event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheetHead"><h2>我的訂單</h2><button class="closeBtn" onclick="closeCart()">×</button></div>
+    <div id="cartItems"></div>
+    <div class="total" id="total">$0</div>
+    <div class="form">
+      <input class="full customerName" id="customerName" placeholder="客戶名稱（已有客戶可只填這一欄）">
+      <div class="orLine full"><span>或</span></div>
+      <input id="name" placeholder="姓名"><input id="phone" placeholder="電話">
+      <input class="full" id="address" placeholder="地址（選填）">
+      <input class="full" id="note" placeholder="備註（選填）">
+    </div>
+    <button class="checkout" onclick="checkout()">送出訂單</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

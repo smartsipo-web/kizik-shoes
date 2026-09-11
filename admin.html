@@ -2,134 +2,104 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>KIZIK 訂單管理後台</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f5f6f8;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif}
-.wrap{max-width:1180px;margin:auto;padding:20px}.top{background:#fff;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:5}
-.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:30px;font-weight:900}.tag{font-size:10px;letter-spacing:2px}
-a{color:inherit}.back{border:1px solid #ddd;background:#fff;border-radius:10px;padding:9px 12px;text-decoration:none;font-weight:800}
-.login{max-width:420px;margin:70px auto;background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:24px}.login h1{font-size:22px;margin:0 0 8px}.login p{color:#6b7280;font-size:13px;line-height:1.6}
-input,select{width:100%;height:42px;border:1px solid #d8dce2;border-radius:9px;padding:0 10px;background:#fff}
-button{border:0;border-radius:9px;padding:10px 13px;font-weight:800;cursor:pointer}.primary{background:#111;color:#fff;width:100%;margin-top:10px}
-#app{display:none}.head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin:18px 0}.head h1{margin:0}.muted{color:#6b7280;font-size:12px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}.stat{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px}.stat small{display:block;color:#6b7280}.stat b{font-size:24px}
-.panel{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin-bottom:16px}.panel h2{margin:0 0 12px;font-size:18px}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.toolbar button,.toolbar select{width:auto}
-.order{border-top:1px solid #eee;padding:14px 0}.order:first-child{border-top:0}.orderTop{display:grid;grid-template-columns:150px 1fr 110px 150px;gap:10px;align-items:start}.orderNo{font-weight:900}.customer{font-weight:800}.items{margin-top:8px;background:#f7f8fa;border-radius:10px;padding:8px 10px;font-size:12px}.item{display:grid;grid-template-columns:1.4fr .7fr .5fr .8fr;gap:8px;padding:5px 0;border-bottom:1px solid #e9eaed}.item:last-child{border-bottom:0}.statusBtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.mini{padding:7px 9px;background:#f1f3f5}.danger{color:#a33}
-.stockRow{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:10px 0;border-top:1px solid #eee}.stockRow:first-child{border-top:0}.stockSku{font-weight:900}.stockGrid{display:flex;flex-wrap:wrap;gap:8px}.stockChip{display:flex;align-items:center;gap:6px;background:#f6f7f8;border-radius:9px;padding:6px}.stockChip input{width:60px;height:32px}.stockChip button{padding:6px 8px;background:#111;color:#fff}
-.empty{padding:20px;color:#777;text-align:center}.logout{background:#eee}
-@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.orderTop{grid-template-columns:1fr 1fr}.stockRow{grid-template-columns:1fr}.item{grid-template-columns:1fr 1fr}}
+*{box-sizing:border-box}body{margin:0;background:#f5f6f8;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{max-width:1180px;margin:auto;padding:20px}.top{background:#fff;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:5}.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:30px;font-weight:900}.tag{font-size:10px;letter-spacing:2px}.back{border:1px solid #ddd;background:#fff;border-radius:10px;padding:9px 12px;text-decoration:none;color:inherit;font-weight:800}.login{max-width:420px;margin:70px auto;background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:24px}.login h1{font-size:22px;margin:0 0 8px}.login p,.muted{color:#6b7280;font-size:12px;line-height:1.6}input,select,textarea{width:100%;border:1px solid #d8dce2;border-radius:9px;padding:0 10px;background:#fff}input,select{height:42px}textarea{padding:10px;min-height:76px;resize:vertical}button{border:0;border-radius:9px;padding:10px 13px;font-weight:800}.primary{background:#111;color:#fff;width:100%;margin-top:10px}#app{display:none}.head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin:18px 0}.head h1{margin:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}.stat{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px}.stat small{display:block;color:#6b7280}.stat b{font-size:24px}.panel{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin-bottom:16px}.panelHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.panel h2{margin:0;font-size:18px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.toolbar button,.toolbar select{width:auto}.mini{padding:7px 9px;background:#f1f3f5}.dark{background:#111;color:#fff}.danger{color:#a33}.order{border-top:1px solid #eee;padding:14px 0}.order:first-child{border-top:0}.orderTop{display:grid;grid-template-columns:160px 1fr 120px 140px;gap:10px;align-items:start}.orderNo{font-weight:900}.customer{font-weight:800}.sourcePill{display:inline-block;margin-top:5px;padding:3px 7px;border-radius:999px;background:#fff3d6;color:#875c00;font-size:10px;font-weight:900}.items{margin-top:8px;background:#f7f8fa;border-radius:10px;padding:8px 10px;font-size:12px}.item{display:grid;grid-template-columns:1.4fr .7fr .5fr .8fr;gap:8px;padding:5px 0;border-bottom:1px solid #e9eaed}.item:last-child{border-bottom:0}.statusBtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.printMini{background:#111;color:#fff}.empty{padding:20px;color:#777;text-align:center}.logout{background:#eee}
+.stockRow{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:10px 0;border-top:1px solid #eee}.stockRow:first-child{border-top:0}.stockSku{font-weight:900}.stockGrid{display:flex;flex-wrap:wrap;gap:8px}.stockChip{display:flex;align-items:center;gap:6px;background:#f6f7f8;border-radius:9px;padding:6px}.stockChip input{width:60px;height:32px}.stockChip button{padding:6px 8px;background:#111;color:#fff}.inventoryBox{display:none}.inventoryBox.open{display:block}
+.activityGrid{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}.activityGrid button{height:42px;background:#111;color:#fff}.groupForm{display:grid;grid-template-columns:1.1fr .55fr .8fr 1fr auto;gap:8px;align-items:start}.groupForm textarea{grid-column:1/-1}.groupForm .addBtn{background:#111;color:#fff;height:42px}.groupRow{border-top:1px solid #eee;padding:14px 0}.groupRow:first-child{border-top:0}.groupTop{display:grid;grid-template-columns:1.2fr 110px 1fr auto;gap:9px;align-items:center}.groupName b{display:block}.groupName small{color:#777}.linkBox{font-size:11px;background:#f6f7f8;padding:9px;border-radius:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.groupNote{margin-top:8px;display:grid;grid-template-columns:1fr 220px;gap:8px}.rowActions{display:flex;gap:5px;flex-wrap:wrap}.off{opacity:.55}.sectionTip{font-size:11px;color:#777;line-height:1.6;margin-bottom:10px}
+.detailmodal{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:16px}.detailmodal.open{display:flex}.detailbox{background:#fff;border-radius:18px;width:min(800px,100%);max-height:90vh;overflow:auto;padding:20px}.detailhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-bottom:1px solid #eee;padding-bottom:12px}.detailhead h2{margin:3px 0}.detailgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.detailcell{background:#f8f6f1;border-radius:10px;padding:10px;min-height:60px}.detailcell small{display:block;color:#777;margin-bottom:3px}.detailitem{display:grid;grid-template-columns:1.1fr 1.2fr .5fr .8fr;gap:8px;padding:9px 0;border-bottom:1px solid #eee;break-inside:avoid}.detailitem span:last-child{text-align:right}.detailactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.printbtn{background:#111;color:#fff}.shipTitle{font-size:22px;font-weight:900;margin:10px 0 2px}.shipSub{font-size:11px;color:#777}.grandTotal{text-align:right;font-size:20px;font-weight:900;margin-top:14px}
+@media(max-width:760px){.wrap{padding:12px}.stats{grid-template-columns:1fr 1fr}.orderTop{grid-template-columns:1fr 1fr}.stockRow{grid-template-columns:1fr}.item{grid-template-columns:1fr 1fr}.groupForm{grid-template-columns:1fr 1fr}.groupForm .addBtn{grid-column:1/-1}.groupTop{grid-template-columns:1fr auto}.groupTop .linkBox{grid-column:1/-1}.groupNote{grid-template-columns:1fr}.detailgrid{grid-template-columns:1fr 1fr}.detailitem{grid-template-columns:1fr 1fr}.activityGrid{grid-template-columns:1fr}}
+@media print{
+  body>*{display:none!important}#orderDetailModal{display:block!important;position:static!important;background:#fff!important;padding:0!important}#orderDetailModal .detailbox{display:block!important;width:100%!important;max-height:none!important;overflow:visible!important;border-radius:0!important;padding:0!important}.detailactions,.detailhead button{display:none!important}.detailhead{border-bottom:2px solid #111}.detailgrid,.detailitem{break-inside:avoid}.detailitem{grid-template-columns:1.1fr 1.2fr .5fr .8fr!important} @page{size:A4;margin:14mm}
+}
 </style>
 </head>
 <body>
 <header class="top"><div class="nav"><div><div class="logo">kizik</div><div class="tag">ORDER ADMIN</div></div><a class="back" href="index.html">返回訂購頁</a></div></header>
-
-<section id="login" class="login">
-  <h1>後台登入</h1>
-  <p>使用與兒童內褲訂購系統相同的後台密碼登入。</p>
-  <input id="password" type="password" placeholder="後台密碼" autocomplete="current-password">
-  <button class="primary" onclick="login()">登入後台</button>
-</section>
+<section id="login" class="login"><h1>後台登入</h1><p>使用與兒童內褲訂購系統相同的後台密碼登入。</p><input id="password" type="password" placeholder="後台密碼" autocomplete="current-password"><button class="primary" onclick="login()">登入後台</button></section>
 
 <main id="app" class="wrap">
-  <div class="head">
-    <div><h1>訂單／庫存管理</h1><div class="muted">Supabase 雲端同步｜不同裝置看到同一批資料</div></div>
-    <div style="display:flex;gap:8px"><button class="mini" onclick="loadData()">重新同步</button><button class="logout" onclick="logout()">登出</button></div>
-  </div>
-  <section class="stats">
-    <div class="stat"><small>全部訂單</small><b id="sOrders">0</b></div>
-    <div class="stat"><small>新訂單</small><b id="sNew">0</b></div>
-    <div class="stat"><small>總件數</small><b id="sItems">0</b></div>
-    <div class="stat"><small>總金額</small><b id="sSales">$0</b></div>
-  </section>
+  <div class="head"><div><h1>訂單／庫存管理</h1><div class="muted">Supabase 雲端同步｜不同裝置看到同一批資料</div></div><div style="display:flex;gap:8px"><button class="mini" onclick="loadData()">重新同步</button><button class="logout" onclick="logout()">登出</button></div></div>
+  <section class="stats"><div class="stat"><small>全部訂單</small><b id="sOrders">0</b></div><div class="stat"><small>新訂單</small><b id="sNew">0</b></div><div class="stat"><small>總件數</small><b id="sItems">0</b></div><div class="stat"><small>總金額</small><b id="sSales">$0</b></div></section>
+
   <section class="panel">
     <h2>訂單處理</h2>
-    <div class="toolbar">
-      <button class="mini" onclick="filter='active';renderOrders()">處理中</button>
-      <button class="mini" onclick="filter='新訂單';renderOrders()">新訂單</button>
-      <button class="mini" onclick="filter='已整理';renderOrders()">已整理</button>
-      <button class="mini" onclick="filter='已出貨';renderOrders()">已出貨</button>
-      <button class="mini" onclick="filter='已完成';renderOrders()">已完成</button>
-      <button class="mini" onclick="filter='取消';renderOrders()">取消</button>
-      <button class="mini" onclick="filter='archived';renderOrders()">已封存</button>
-      <button class="mini" onclick="filter='all';renderOrders()">全部</button>
-    </div>
+    <div class="toolbar" style="margin-top:12px"><button class="mini" onclick="setFilter('active')">處理中</button><button class="mini" onclick="setFilter('新訂單')">新訂單</button><button class="mini" onclick="setFilter('已整理')">已整理</button><button class="mini" onclick="setFilter('已出貨')">已出貨</button><button class="mini" onclick="setFilter('已完成')">已完成</button><button class="mini" onclick="setFilter('取消')">取消</button><button class="mini" onclick="setFilter('archived')">已封存</button><button class="mini" onclick="setFilter('all')">全部</button></div>
     <div id="orders"></div>
   </section>
+
   <section class="panel">
-    <h2>商品庫存</h2>
-    <div class="muted" style="margin-bottom:10px">庫存只在後台顯示；前台僅控制售完尺寸不可選。</div>
-    <div id="inventory"></div>
+    <div class="panelHead"><div><h2>商品庫存</h2><div class="muted">庫存只在後台顯示；前台只顯示售完狀態。</div></div><button id="inventoryToggle" class="dark" onclick="toggleInventory()">查看／編輯庫存</button></div>
+    <div id="inventoryBox" class="inventoryBox"><div id="inventory"></div></div>
   </section>
+
+  <section class="panel">
+    <div class="panelHead"><div><h2>目前活動</h2><div class="muted">這段文字會顯示在一般客戶前台「目前活動」欄。</div></div></div>
+    <div class="activityGrid"><textarea id="generalActivity" placeholder="例如：新品上市、滿額活動、本月活動說明"></textarea><button onclick="saveGeneralActivity()">儲存活動</button></div>
+  </section>
+
+  <section class="panel">
+    <h2>新增團購連結</h2>
+    <div class="sectionTip">建立後會產生專屬網址，例如 <b>?source=taichung-mom</b>。團購訂單會自動記錄來源，並依設定折扣計算。</div>
+    <div class="groupForm">
+      <input id="newGroupName" placeholder="團購名稱，例如：台中媽媽團">
+      <input id="newGroupDiscount" type="number" min="1" max="100" value="100" placeholder="折扣 %">
+      <input id="newGroupSlug" placeholder="連結代碼（可留空）">
+      <input id="newGroupEnds" type="datetime-local" title="截止時間（可留空）">
+      <button class="addBtn" onclick="addGroup()">＋ 新增團購</button>
+      <textarea id="newGroupNote" placeholder="活動備註，例如：9/20 截止，統一由團主取貨"></textarea>
+    </div>
+  </section>
+
+  <section class="panel"><h2>團購連結設定</h2><div class="sectionTip">可複製連結、調整折扣／備註／截止時間，或暫停入口。</div><div id="groups"></div></section>
 </main>
+
+<div class="detailmodal" id="orderDetailModal" onclick="if(event.target===this)closeOrderDetail()">
+  <div class="detailbox">
+    <div class="detailhead"><div><small>KIZIK · SHIPPING ORDER</small><div class="shipTitle">KIZIK 出貨單</div><h2 id="detailOrderNo">訂單明細</h2><div class="shipSub">伯鑫國際貿易有限公司｜04-2524-4025</div></div><button class="mini" onclick="closeOrderDetail()">關閉 ×</button></div>
+    <div id="detailContent"></div>
+    <div class="detailactions"><button class="printbtn" onclick="window.print()">列印出貨單</button><button class="mini" onclick="detailSetStatus('已整理')">標記已整理</button><button class="mini" onclick="detailSetStatus('已出貨')">標記已出貨</button><button class="mini" onclick="detailSetStatus('已完成')">標記已完成</button></div>
+  </div>
+</div>
 
 <script>
 const API='https://dgkigykovxuvdveldcvv.supabase.co/functions/v1/kizik-admin-orders';
+const SITE='https://kizik-shoes.vercel.app/';
 let password=sessionStorage.getItem('kizik_admin_password')||'';
-let data={orders:[],inventory:[]},filter='active';
-async function api(method='GET',body=null){
-  const r=await fetch(API,{method,headers:{'x-admin-password':password,'Content-Type':'application/json'},body:body?JSON.stringify(body):null,cache:'no-store'});
-  const d=await r.json();
-  if(r.status===401)throw new Error('密碼錯誤');
-  if(!r.ok||d.success===false)throw new Error(d.error||'同步失敗');
-  return d;
-}
-async function login(){
-  password=document.querySelector('#password').value.trim();
-  if(!password)return;
-  try{await loadData(true);sessionStorage.setItem('kizik_admin_password',password);showApp();}
-  catch(e){alert(e.message)}
-}
+let data={orders:[],inventory:[],groups:[],general_activity:'目前無特別活動。'},filter='active',inventoryOpen=false,currentDetailId=null;
+async function api(method='GET',body=null){const r=await fetch(API,{method,headers:{'x-admin-password':password,'Content-Type':'application/json'},body:body?JSON.stringify(body):null,cache:'no-store'}),d=await r.json();if(r.status===401)throw new Error('密碼錯誤');if(!r.ok||d.success===false)throw new Error(d.error||'同步失敗');return d}
+async function login(){password=document.querySelector('#password').value.trim();if(!password)return;try{await loadData(true);sessionStorage.setItem('kizik_admin_password',password);showApp()}catch(e){alert(e.message)}}
 function logout(){sessionStorage.removeItem('kizik_admin_password');password='';location.reload()}
 function showApp(){document.querySelector('#login').style.display='none';document.querySelector('#app').style.display='block'}
-async function loadData(fromLogin=false){
-  try{data=await api('GET');renderAll();if(!fromLogin)showApp();}
-  catch(e){if(fromLogin)throw e;alert(e.message)}
-}
+async function loadData(fromLogin=false){try{data=await api('GET');renderAll();if(!fromLogin)showApp()}catch(e){if(fromLogin)throw e;alert(e.message)}}
 function money(n){return '$'+Number(n||0).toLocaleString('zh-TW')}
-function renderAll(){
-  const orders=data.orders||[];
-  document.querySelector('#sOrders').textContent=orders.filter(o=>!o.archived).length;
-  document.querySelector('#sNew').textContent=orders.filter(o=>!o.archived&&o.status==='新訂單').length;
-  document.querySelector('#sItems').textContent=orders.filter(o=>!o.archived).reduce((a,o)=>a+Number(o.item_count||0),0);
-  document.querySelector('#sSales').textContent=money(orders.filter(o=>!o.archived&&o.status!=='取消').reduce((a,o)=>a+Number(o.total||0),0));
-  renderOrders();renderInventory();
-}
-function renderOrders(){
-  let list=(data.orders||[]).filter(o=>{
-    if(filter==='archived')return o.archived;
-    if(filter==='all')return true;
-    if(filter==='active')return !o.archived&&!['已完成','取消'].includes(o.status);
-    return !o.archived&&o.status===filter;
-  });
-  const box=document.querySelector('#orders');box.innerHTML='';
-  if(!list.length){box.innerHTML='<div class="empty">目前沒有符合條件的訂單</div>';return}
-  for(const o of list){
-    const who=o.customer_name||o.contact_name||'-';
-    const contact=[o.contact_name,o.phone].filter(Boolean).join('｜');
-    const items=(o.kizik_order_items||[]).map(i=>`<div class="item"><b>${i.sku}</b><span>${i.size}${i.cm?'｜'+i.cm+'cm':''}</span><span>× ${i.qty}</span><b>${money(i.line_total)}</b></div>`).join('');
-    const d=document.createElement('div');d.className='order';
-    d.innerHTML=`<div class="orderTop"><div><div class="orderNo">${o.order_no}</div><div class="muted">${new Date(o.created_at).toLocaleString('zh-TW')}</div></div><div><div class="customer">${who}</div><div class="muted">${contact||''}${o.address?'<br>'+o.address:''}${o.note?'<br>備註：'+o.note:''}</div></div><div><b>${o.status}</b><div class="muted">${o.item_count} 雙</div></div><div style="text-align:right"><b>${money(o.total)}</b></div></div><div class="items">${items}</div><div class="statusBtns">${['新訂單','已整理','已出貨','已完成','取消'].map(s=>`<button class="mini" onclick="setStatus(${o.id},'${s}')">${s}</button>`).join('')}${o.status==='已完成'&&!o.archived?`<button class="mini" onclick="archiveOrder(${o.id})">封存</button>`:''}${o.archived?`<button class="mini" onclick="restoreOrder(${o.id})">恢復</button>`:''}</div>`;
-    box.appendChild(d);
-  }
-}
+function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function fmtDate(v){return v?new Date(v).toLocaleString('zh-TW'):'-'}
+function discountText(rate){const z=Math.round(Number(rate||1)*100)/10;return Number.isInteger(z)?z+' 折':z.toFixed(1)+' 折'}
+function renderAll(){const orders=data.orders||[];document.querySelector('#sOrders').textContent=orders.filter(o=>!o.archived).length;document.querySelector('#sNew').textContent=orders.filter(o=>!o.archived&&o.status==='新訂單').length;document.querySelector('#sItems').textContent=orders.filter(o=>!o.archived).reduce((a,o)=>a+Number(o.item_count||0),0);document.querySelector('#sSales').textContent=money(orders.filter(o=>!o.archived&&o.status!=='取消').reduce((a,o)=>a+Number(o.total||0),0));document.querySelector('#generalActivity').value=data.general_activity||'';renderOrders();renderInventory();renderGroups()}
+function setFilter(v){filter=v;renderOrders()}
+function filteredOrders(){return (data.orders||[]).filter(o=>{if(filter==='archived')return o.archived;if(filter==='all')return true;if(filter==='active')return !o.archived&&!['已完成','取消'].includes(o.status);return !o.archived&&o.status===filter})}
+function renderOrders(){const list=filteredOrders(),box=document.querySelector('#orders');box.innerHTML='';if(!list.length){box.innerHTML='<div class="empty">目前沒有符合條件的訂單</div>';return}for(const o of list){const who=o.customer_name||o.contact_name||'-',contact=[o.contact_name,o.phone].filter(Boolean).join('｜'),source=o.source_name||'一般客戶',items=(o.kizik_order_items||[]).map(i=>`<div class="item"><b>${esc(i.sku)}</b><span>${esc(i.size)}${i.cm?'｜'+esc(i.cm)+'cm':''}</span><span>× ${i.qty}</span><b>${money(i.line_total)}</b></div>`).join(''),d=document.createElement('div');d.className='order';d.innerHTML=`<div class="orderTop"><div><div class="orderNo">${esc(o.order_no)}</div><div class="muted">${fmtDate(o.created_at)}</div>${o.source_key&&o.source_key!=='general'?`<span class="sourcePill">${esc(source)}｜${discountText(o.discount_rate)}</span>`:''}</div><div><div class="customer">${esc(who)}</div><div class="muted">${esc(contact)}${o.address?'<br>'+esc(o.address):''}${o.note?'<br>備註：'+esc(o.note):''}</div></div><div><b>${esc(o.status)}</b><div class="muted">${o.item_count} 雙</div></div><div style="text-align:right"><b>${money(o.total)}</b></div></div><div class="items">${items}</div><div class="statusBtns"><button class="mini printMini" onclick="openOrderDetail(${o.id})">查看／列印出貨單</button>${['新訂單','已整理','已出貨','已完成','取消'].map(s=>`<button class="mini" onclick="setStatus(${o.id},'${s}')">${s}</button>`).join('')}${o.status==='已完成'&&!o.archived?`<button class="mini" onclick="archiveOrder(${o.id})">封存</button>`:''}${o.archived?`<button class="mini" onclick="restoreOrder(${o.id})">恢復</button>`:''}</div>`;box.appendChild(d)}}
 async function setStatus(id,status){await api('POST',{action:'status',ids:[id],status});await loadData()}
 async function archiveOrder(id){await api('POST',{action:'archive',ids:[id]});await loadData()}
 async function restoreOrder(id){await api('POST',{action:'restore',ids:[id]});await loadData()}
-function renderInventory(){
-  const groups={};for(const v of (data.inventory||[]))(groups[v.sku] ||= []).push(v);
-  const box=document.querySelector('#inventory');box.innerHTML='';
-  for(const sku of Object.keys(groups).sort()){
-    const r=document.createElement('div');r.className='stockRow';
-    r.innerHTML=`<div class="stockSku">${sku}</div><div class="stockGrid">${groups[sku].map(v=>`<div class="stockChip"><b>${v.size}</b><input id="st_${sku}_${String(v.size).replace(/[^a-zA-Z0-9]/g,'_')}" type="number" min="0" value="${v.stock_qty}"><button onclick="saveStock('${sku}','${v.size}',this)">儲存</button></div>`).join('')}</div>`;
-    box.appendChild(r);
-  }
-}
-async function saveStock(sku,size,btn){
-  const inp=btn.previousElementSibling,qty=Number(inp.value);if(!Number.isInteger(qty)||qty<0)return alert('庫存需為 0 以上整數');
-  btn.disabled=true;try{await api('POST',{action:'stock',sku,size,stock_qty:qty});await loadData()}catch(e){alert(e.message)}finally{btn.disabled=false}
-}
+function openOrderDetail(id){const o=(data.orders||[]).find(x=>Number(x.id)===Number(id));if(!o)return;currentDetailId=o.id;document.querySelector('#detailOrderNo').textContent=o.order_no;const items=(o.kizik_order_items||[]).map(i=>`<div class="detailitem"><b>${esc(i.sku)}</b><span>US ${esc(i.size)}${i.cm?'｜'+esc(i.cm)+' cm':''}</span><span>× ${i.qty}</span><b>${money(i.line_total)}</b></div>`).join('');document.querySelector('#detailContent').innerHTML=`<div class="detailgrid"><div class="detailcell"><small>客戶</small><b>${esc(o.customer_name||o.contact_name||'-')}</b></div><div class="detailcell"><small>聯絡人／電話</small><b>${esc([o.contact_name,o.phone].filter(Boolean).join('｜')||'-')}</b></div><div class="detailcell"><small>訂單日期</small><b>${fmtDate(o.created_at)}</b></div><div class="detailcell"><small>地址</small><b>${esc(o.address||'-')}</b></div><div class="detailcell"><small>訂單來源</small><b>${esc(o.source_name||'一般客戶')}${o.source_key&&o.source_key!=='general'?'｜'+discountText(o.discount_rate):''}</b></div><div class="detailcell"><small>狀態</small><b>${esc(o.status)}</b></div></div>${o.note?`<div class="detailcell" style="margin-bottom:12px"><small>備註</small><b>${esc(o.note)}</b></div>`:''}<div style="border-top:2px solid #111;border-bottom:2px solid #111"><div class="detailitem" style="font-weight:900"><span>貨號</span><span>尺寸</span><span>數量</span><span>金額</span></div>${items}</div><div class="grandTotal">合計 ${o.item_count} 雙｜${money(o.total)}</div>`;document.querySelector('#orderDetailModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeOrderDetail(){document.querySelector('#orderDetailModal').classList.remove('open');document.body.style.overflow='';currentDetailId=null}
+async function detailSetStatus(status){if(!currentDetailId)return;await setStatus(currentDetailId,status);const id=currentDetailId;openOrderDetail(id)}
+function toggleInventory(){inventoryOpen=!inventoryOpen;document.querySelector('#inventoryBox').classList.toggle('open',inventoryOpen);document.querySelector('#inventoryToggle').textContent=inventoryOpen?'收起庫存明細':'查看／編輯庫存'}
+function renderInventory(){const groups={};for(const v of(data.inventory||[]))(groups[v.sku]||=[]).push(v);const box=document.querySelector('#inventory');box.innerHTML='';for(const sku of Object.keys(groups).sort()){const r=document.createElement('div');r.className='stockRow';r.innerHTML=`<div class="stockSku">${esc(sku)}</div><div class="stockGrid">${groups[sku].map(v=>`<div class="stockChip"><b>${esc(v.size)}</b><input type="number" min="0" value="${v.stock_qty}"><button onclick="saveStock('${esc(sku)}','${esc(v.size)}',this)">儲存</button></div>`).join('')}</div>`;box.appendChild(r)}}
+async function saveStock(sku,size,btn){const inp=btn.previousElementSibling,qty=Number(inp.value);if(!Number.isInteger(qty)||qty<0)return alert('庫存需為 0 以上整數');btn.disabled=true;try{await api('POST',{action:'stock',sku,size,stock_qty:qty});await loadData()}catch(e){alert(e.message)}finally{btn.disabled=false}}
+async function saveGeneralActivity(){const value=document.querySelector('#generalActivity').value.trim();try{await api('POST',{action:'general_activity',value});await loadData();alert('目前活動已更新')}catch(e){alert('儲存失敗：'+e.message)}}
+function slugify(s){return String(s||'').trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-_]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')||('group-'+Date.now())}
+async function addGroup(){const name=document.querySelector('#newGroupName').value.trim();let pct=Number(document.querySelector('#newGroupDiscount').value);if(!name)return alert('請輸入團購名稱');if(!pct||pct<1||pct>100)return alert('折扣請輸入 1～100');const key=slugify(document.querySelector('#newGroupSlug').value||name),note=document.querySelector('#newGroupNote').value.trim(),v=document.querySelector('#newGroupEnds').value,ends=v?new Date(v).toISOString():null;if((data.groups||[]).some(g=>g.group_key===key))return alert('這個連結代碼已經使用，請換一個');try{await api('POST',{action:'save_group',group_key:key,name,discount_rate:pct/100,active:true,note,ends_at:ends});document.querySelector('#newGroupName').value='';document.querySelector('#newGroupSlug').value='';document.querySelector('#newGroupNote').value='';document.querySelector('#newGroupEnds').value='';await loadData();alert('團購連結已建立')}catch(e){alert('新增失敗：'+e.message)}}
+function toLocalInput(v){if(!v)return'';const d=new Date(v),pad=n=>String(n).padStart(2,'0');return`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`}
+function renderGroups(){const box=document.querySelector('#groups'),list=data.groups||[];box.innerHTML='';if(!list.length){box.innerHTML='<div class="empty">目前沒有團購連結</div>';return}for(const g of list){const url=SITE+'?source='+encodeURIComponent(g.group_key),r=document.createElement('div');r.className='groupRow'+(g.active?'':' off');r.innerHTML=`<div class="groupTop"><div class="groupName"><b>${esc(g.name)}</b><small>代碼：${esc(g.group_key)} ${g.active?'｜啟用中':'｜已暫停'}</small></div><input type="number" min="1" max="100" value="${Math.round(Number(g.discount_rate)*100)}" onchange="updateGroup('${esc(g.group_key)}','discount',this.value)"><div class="linkBox" title="${esc(url)}">${esc(url)}</div><div class="rowActions"><button class="mini dark" onclick="copyLink('${esc(url)}')">複製連結</button><button class="mini" onclick="toggleGroup('${esc(g.group_key)}')">${g.active?'暫停':'啟用'}</button><button class="mini danger" onclick="deleteGroup('${esc(g.group_key)}')">刪除</button></div></div><div class="groupNote"><textarea data-note="${esc(g.group_key)}" onchange="updateGroup('${esc(g.group_key)}','note',this.value)" placeholder="活動備註">${esc(g.note||'')}</textarea><div><div class="muted" style="margin-bottom:4px">截止時間（可留空）</div><input type="datetime-local" value="${toLocalInput(g.ends_at)}" onchange="updateGroup('${esc(g.group_key)}','ends',this.value)"></div></div>`;box.appendChild(r)}}
+async function updateGroup(key,field,value){const g=(data.groups||[]).find(x=>x.group_key===key);if(!g)return;let rate=Number(g.discount_rate),note=g.note||'',ends=g.ends_at||null;if(field==='discount'){const pct=Number(value);if(!pct||pct<1||pct>100)return alert('折扣請輸入 1～100');rate=pct/100}else if(field==='note')note=String(value).trim();else if(field==='ends')ends=value?new Date(value).toISOString():null;try{await api('POST',{action:'save_group',group_key:g.group_key,name:g.name,discount_rate:rate,active:g.active!==false,note,ends_at:ends});await loadData()}catch(e){alert('更新失敗：'+e.message)}}
+async function toggleGroup(key){const g=(data.groups||[]).find(x=>x.group_key===key);if(!g)return;try{await api('POST',{action:'save_group',group_key:g.group_key,name:g.name,discount_rate:Number(g.discount_rate)||1,active:g.active===false,note:g.note||'',ends_at:g.ends_at||null});await loadData()}catch(e){alert('更新失敗：'+e.message)}}
+async function deleteGroup(key){const g=(data.groups||[]).find(x=>x.group_key===key);if(!g||!confirm(`確定刪除「${g.name}」團購連結？`))return;try{await api('POST',{action:'delete_group',group_key:key});await loadData()}catch(e){alert('刪除失敗：'+e.message)}}
+async function copyLink(url){try{await navigator.clipboard.writeText(url);alert('團購連結已複製')}catch{prompt('請複製這個連結',url)}}
 if(password){loadData().then(showApp).catch(()=>{password='';sessionStorage.removeItem('kizik_admin_password')})}
 </script>
-</body></html>
+</body>
+</html>
