@@ -3,11 +3,11 @@ const KIZIK_CATALOG_API=KIZIK_API_BASE+'/kizik-catalog';
 const KIZIK_SUBMIT_API=KIZIK_API_BASE+'/kizik-submit-order';
 
 const PRODUCT_META=[
-  ['WFRE2607','assets/products/WFRE2607.jpg'],['WSIE2607','assets/products/WSIE2607.jpg'],['WSIE2606','assets/products/WSIE2606.jpg'],['WSIE2603','assets/products/WSIE2603.jpg'],
+  ['WFRE2607','assets/products/WFRE2607.jpg'],['WFRE2601','assets/products/WFRE2601.jpg'],['WSIE2607','assets/products/WSIE2607.jpg'],['WSIE2606','assets/products/WSIE2606.jpg'],['WSIE2603','assets/products/WSIE2603.jpg'],
   ['MATH2509','assets/products/MATH2509.jpg'],['MSIE2605','assets/products/MSIE2605.jpg'],['MSIE2604','assets/products/MSIE2604.jpg'],['MSIE2602','assets/products/MSIE2602.jpg'],
-  ['MMON2504','assets/products/MMON2504.jpg'],['WMON2501','assets/products/WMON2501.png'],['MFRE2610','assets/products/MFRE2610.jpg'],['MFRE2607','assets/products/MFRE2607.jpg'],
-  ['MATH2510','assets/products/MATH2510.jpg'],['MATH2608','assets/products/MATH2608.jpg'],['MATH2606','assets/products/IMG_5580.JPG'],['WATH2612','assets/products/WATH2612.jpg'],
-  ['WATH2611','assets/products/IMG_5582.JPG'],['WMON2603','assets/products/IMG_5583.JPG'],['WSIE2602','assets/products/WSIE2602.jpg'],['WSIE2609','assets/products/WSIE2609.jpg'],
+  ['MMON2504','assets/products/MMON2504.jpg'],['WMON2501','assets/products/WMON2501.jpg'],['MFRE2610','assets/products/MFRE2610.jpg'],['MFRE2607','assets/products/MFRE2607.jpg'],
+  ['MATH2510','assets/products/MATH2510.jpg'],['MATH2608','assets/products/MATH2608.jpg'],['MATH2606','assets/products/MATH2606.jpg'],['WATH2506','assets/products/WATH2506.jpg'],['WATH2612','assets/products/WATH2612.jpg'],
+  ['WATH2611','assets/products/WATH2611.jpg'],['WMON2603','assets/products/WMON2603.jpg'],['WSIE2602','assets/products/WSIE2602.jpg'],['WSIE2609','assets/products/WSIE2609.jpg'],
   ['BATH2502','assets/products/BATH2502.jpg'],['LATH2502','assets/products/LATH2502.jpg']
 ];
 const IMAGE_MAP=Object.fromEntries(PRODUCT_META);
