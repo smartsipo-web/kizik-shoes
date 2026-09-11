@@ -137,8 +137,11 @@ async function checkout(){
     const payload={customer_name:customerName,contact_name:name,phone,address,note,source_key:sourceKey,items:cart.map(i=>({sku:i.sku,size:String(i.size),qty:Number(i.qty)}))};
     const r=await fetch(KIZIK_SUBMIT_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}),d=await r.json();
     if(!r.ok||!d.success){const msg=String(d.error||'');if(msg.startsWith('insufficient_stock:'))throw new Error('部分尺寸庫存不足，請重新選擇');if(msg==='group_ended')throw new Error('此團購活動已截止，請改用一般訂購入口');throw new Error(d.error||'訂單送出失敗');}
+    const submittedItems=cart.map(i=>({...i}));
+    const submittedTotal=submittedItems.reduce((a,i)=>a+Number(i.price)*Number(i.qty),0);
+    const detailLines=submittedItems.map(i=>`${i.sku}｜US ${i.size}${i.cm?' / '+i.cm+'cm':''} × ${i.qty}｜${money(Number(i.price)*Number(i.qty))}`).join('\n');
     cart=[];save();updateCart();await syncCatalog();render();
-    alert(`訂單已送出！\n訂單編號：${d.order_no}${d.source_name&&d.source_name!=='一般客戶'?`\n團購：${d.source_name}`:''}`);closeCart();
+    alert(`訂單已送出！\n訂單編號：${d.order_no}${d.source_name&&d.source_name!=='一般客戶'?`\n團購：${d.source_name}`:''}\n\n訂購明細：\n${detailLines}\n\n共 ${submittedItems.reduce((a,i)=>a+Number(i.qty),0)} 雙｜合計 ${money(submittedTotal)}\n\n歡迎螢幕截圖留存`);closeCart();
   }catch(err){alert(err?.message||'訂單送出失敗，請稍後再試');}
   finally{btn.disabled=false;btn.textContent='送出訂單';}
 }
