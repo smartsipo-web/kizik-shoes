@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KIZIK 訂單管理後台</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f6f8;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif}
+.wrap{max-width:1180px;margin:auto;padding:20px}.top{background:#fff;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:5}
+.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:30px;font-weight:900}.tag{font-size:10px;letter-spacing:2px}
+a{color:inherit}.back{border:1px solid #ddd;background:#fff;border-radius:10px;padding:9px 12px;text-decoration:none;font-weight:800}
+.login{max-width:420px;margin:70px auto;background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:24px}.login h1{font-size:22px;margin:0 0 8px}.login p{color:#6b7280;font-size:13px;line-height:1.6}
+input,select{width:100%;height:42px;border:1px solid #d8dce2;border-radius:9px;padding:0 10px;background:#fff}
+button{border:0;border-radius:9px;padding:10px 13px;font-weight:800;cursor:pointer}.primary{background:#111;color:#fff;width:100%;margin-top:10px}
+#app{display:none}.head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin:18px 0}.head h1{margin:0}.muted{color:#6b7280;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}.stat{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px}.stat small{display:block;color:#6b7280}.stat b{font-size:24px}
+.panel{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin-bottom:16px}.panel h2{margin:0 0 12px;font-size:18px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.toolbar button,.toolbar select{width:auto}
+.order{border-top:1px solid #eee;padding:14px 0}.order:first-child{border-top:0}.orderTop{display:grid;grid-template-columns:150px 1fr 110px 150px;gap:10px;align-items:start}.orderNo{font-weight:900}.customer{font-weight:800}.items{margin-top:8px;background:#f7f8fa;border-radius:10px;padding:8px 10px;font-size:12px}.item{display:grid;grid-template-columns:1.4fr .7fr .5fr .8fr;gap:8px;padding:5px 0;border-bottom:1px solid #e9eaed}.item:last-child{border-bottom:0}.statusBtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.mini{padding:7px 9px;background:#f1f3f5}.danger{color:#a33}
+.stockRow{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:10px 0;border-top:1px solid #eee}.stockRow:first-child{border-top:0}.stockSku{font-weight:900}.stockGrid{display:flex;flex-wrap:wrap;gap:8px}.stockChip{display:flex;align-items:center;gap:6px;background:#f6f7f8;border-radius:9px;padding:6px}.stockChip input{width:60px;height:32px}.stockChip button{padding:6px 8px;background:#111;color:#fff}
+.empty{padding:20px;color:#777;text-align:center}.logout{background:#eee}
+@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.orderTop{grid-template-columns:1fr 1fr}.stockRow{grid-template-columns:1fr}.item{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="nav"><div><div class="logo">kizik</div><div class="tag">ORDER ADMIN</div></div><a class="back" href="index.html">返回訂購頁</a></div></header>
+
+<section id="login" class="login">
+  <h1>後台登入</h1>
+  <p>使用與兒童內褲訂購系統相同的後台密碼登入。</p>
+  <input id="password" type="password" placeholder="後台密碼" autocomplete="current-password">
+  <button class="primary" onclick="login()">登入後台</button>
+</section>
+
+<main id="app" class="wrap">
+  <div class="head">
+    <div><h1>訂單／庫存管理</h1><div class="muted">Supabase 雲端同步｜不同裝置看到同一批資料</div></div>
+    <div style="display:flex;gap:8px"><button class="mini" onclick="loadData()">重新同步</button><button class="logout" onclick="logout()">登出</button></div>
+  </div>
+  <section class="stats">
+    <div class="stat"><small>全部訂單</small><b id="sOrders">0</b></div>
+    <div class="stat"><small>新訂單</small><b id="sNew">0</b></div>
+    <div class="stat"><small>總件數</small><b id="sItems">0</b></div>
+    <div class="stat"><small>總金額</small><b id="sSales">$0</b></div>
+  </section>
+  <section class="panel">
+    <h2>訂單處理</h2>
+    <div class="toolbar">
+      <button class="mini" onclick="filter='active';renderOrders()">處理中</button>
+      <button class="mini" onclick="filter='新訂單';renderOrders()">新訂單</button>
+      <button class="mini" onclick="filter='已整理';renderOrders()">已整理</button>
+      <button class="mini" onclick="filter='已出貨';renderOrders()">已出貨</button>
+      <button class="mini" onclick="filter='已完成';renderOrders()">已完成</button>
+      <button class="mini" onclick="filter='取消';renderOrders()">取消</button>
+      <button class="mini" onclick="filter='archived';renderOrders()">已封存</button>
+      <button class="mini" onclick="filter='all';renderOrders()">全部</button>
+    </div>
+    <div id="orders"></div>
+  </section>
+  <section class="panel">
+    <h2>商品庫存</h2>
+    <div class="muted" style="margin-bottom:10px">庫存只在後台顯示；前台僅控制售完尺寸不可選。</div>
+    <div id="inventory"></div>
+  </section>
+</main>
+
+<script>
+const API='https://dgkigykovxuvdveldcvv.supabase.co/functions/v1/kizik-admin-orders';
+let password=sessionStorage.getItem('kizik_admin_password')||'';
+let data={orders:[],inventory:[]},filter='active';
+async function api(method='GET',body=null){
+  const r=await fetch(API,{method,headers:{'x-admin-password':password,'Content-Type':'application/json'},body:body?JSON.stringify(body):null,cache:'no-store'});
+  const d=await r.json();
+  if(r.status===401)throw new Error('密碼錯誤');
+  if(!r.ok||d.success===false)throw new Error(d.error||'同步失敗');
+  return d;
+}
+async function login(){
+  password=document.querySelector('#password').value.trim();
+  if(!password)return;
+  try{await loadData(true);sessionStorage.setItem('kizik_admin_password',password);showApp();}
+  catch(e){alert(e.message)}
+}
+function logout(){sessionStorage.removeItem('kizik_admin_password');password='';location.reload()}
+function showApp(){document.querySelector('#login').style.display='none';document.querySelector('#app').style.display='block'}
+async function loadData(fromLogin=false){
+  try{data=await api('GET');renderAll();if(!fromLogin)showApp();}
+  catch(e){if(fromLogin)throw e;alert(e.message)}
+}
+function money(n){return '$'+Number(n||0).toLocaleString('zh-TW')}
+function renderAll(){
+  const orders=data.orders||[];
+  document.querySelector('#sOrders').textContent=orders.filter(o=>!o.archived).length;
+  document.querySelector('#sNew').textContent=orders.filter(o=>!o.archived&&o.status==='新訂單').length;
+  document.querySelector('#sItems').textContent=orders.filter(o=>!o.archived).reduce((a,o)=>a+Number(o.item_count||0),0);
+  document.querySelector('#sSales').textContent=money(orders.filter(o=>!o.archived&&o.status!=='取消').reduce((a,o)=>a+Number(o.total||0),0));
+  renderOrders();renderInventory();
+}
+function renderOrders(){
+  let list=(data.orders||[]).filter(o=>{
+    if(filter==='archived')return o.archived;
+    if(filter==='all')return true;
+    if(filter==='active')return !o.archived&&!['已完成','取消'].includes(o.status);
+    return !o.archived&&o.status===filter;
+  });
+  const box=document.querySelector('#orders');box.innerHTML='';
+  if(!list.length){box.innerHTML='<div class="empty">目前沒有符合條件的訂單</div>';return}
+  for(const o of list){
+    const who=o.customer_name||o.contact_name||'-';
+    const contact=[o.contact_name,o.phone].filter(Boolean).join('｜');
+    const items=(o.kizik_order_items||[]).map(i=>`<div class="item"><b>${i.sku}</b><span>${i.size}${i.cm?'｜'+i.cm+'cm':''}</span><span>× ${i.qty}</span><b>${money(i.line_total)}</b></div>`).join('');
+    const d=document.createElement('div');d.className='order';
+    d.innerHTML=`<div class="orderTop"><div><div class="orderNo">${o.order_no}</div><div class="muted">${new Date(o.created_at).toLocaleString('zh-TW')}</div></div><div><div class="customer">${who}</div><div class="muted">${contact||''}${o.address?'<br>'+o.address:''}${o.note?'<br>備註：'+o.note:''}</div></div><div><b>${o.status}</b><div class="muted">${o.item_count} 雙</div></div><div style="text-align:right"><b>${money(o.total)}</b></div></div><div class="items">${items}</div><div class="statusBtns">${['新訂單','已整理','已出貨','已完成','取消'].map(s=>`<button class="mini" onclick="setStatus(${o.id},'${s}')">${s}</button>`).join('')}${o.status==='已完成'&&!o.archived?`<button class="mini" onclick="archiveOrder(${o.id})">封存</button>`:''}${o.archived?`<button class="mini" onclick="restoreOrder(${o.id})">恢復</button>`:''}</div>`;
+    box.appendChild(d);
+  }
+}
+async function setStatus(id,status){await api('POST',{action:'status',ids:[id],status});await loadData()}
+async function archiveOrder(id){await api('POST',{action:'archive',ids:[id]});await loadData()}
+async function restoreOrder(id){await api('POST',{action:'restore',ids:[id]});await loadData()}
+function renderInventory(){
+  const groups={};for(const v of (data.inventory||[]))(groups[v.sku] ||= []).push(v);
+  const box=document.querySelector('#inventory');box.innerHTML='';
+  for(const sku of Object.keys(groups).sort()){
+    const r=document.createElement('div');r.className='stockRow';
+    r.innerHTML=`<div class="stockSku">${sku}</div><div class="stockGrid">${groups[sku].map(v=>`<div class="stockChip"><b>${v.size}</b><input id="st_${sku}_${String(v.size).replace(/[^a-zA-Z0-9]/g,'_')}" type="number" min="0" value="${v.stock_qty}"><button onclick="saveStock('${sku}','${v.size}',this)">儲存</button></div>`).join('')}</div>`;
+    box.appendChild(r);
+  }
+}
+async function saveStock(sku,size,btn){
+  const inp=btn.previousElementSibling,qty=Number(inp.value);if(!Number.isInteger(qty)||qty<0)return alert('庫存需為 0 以上整數');
+  btn.disabled=true;try{await api('POST',{action:'stock',sku,size,stock_qty:qty});await loadData()}catch(e){alert(e.message)}finally{btn.disabled=false}
+}
+if(password){loadData().then(showApp).catch(()=>{password='';sessionStorage.removeItem('kizik_admin_password')})}
+</script>
+</body></html>

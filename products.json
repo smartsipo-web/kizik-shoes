@@ -1,0 +1,702 @@
+[
+  {
+    "sku": "WFRE2607",
+    "name": "WFRE2607",
+    "price": 4680,
+    "range": "6-9",
+    "category": "women",
+    "image": "assets/products/IMG_7356.JPG",
+    "sizes": [
+      {
+        "us": 6.0,
+        "cm": 22.5
+      },
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WSIE2607",
+    "name": "WSIE2607",
+    "price": 3980,
+    "range": "6-9",
+    "category": "women",
+    "image": "assets/products/IMG_4906.JPG",
+    "sizes": [
+      {
+        "us": 6.0,
+        "cm": 22.5
+      },
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WSIE2606",
+    "name": "WSIE2606",
+    "price": 3980,
+    "range": "6-9",
+    "category": "women",
+    "image": "assets/products/IMG_4907.JPG",
+    "sizes": [
+      {
+        "us": 6.0,
+        "cm": 22.5
+      },
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WSIE2603",
+    "name": "WSIE2603",
+    "price": 3980,
+    "range": "6-9",
+    "category": "women",
+    "image": "assets/products/IMG_4908.JPG",
+    "sizes": [
+      {
+        "us": 6.0,
+        "cm": 22.5
+      },
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MATH2509",
+    "name": "MATH2509",
+    "price": 4680,
+    "range": "9-11",
+    "category": "men",
+    "image": "assets/products/IMG_4911.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MSIE2605",
+    "name": "MSIE2605",
+    "price": 3980,
+    "range": "9-11",
+    "category": "men",
+    "image": "assets/products/IMG_4912.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MSIE2604",
+    "name": "MSIE2604",
+    "price": 3980,
+    "range": "9-11",
+    "category": "men",
+    "image": "assets/products/IMG_4913.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MSIE2602",
+    "name": "MSIE2602",
+    "price": 3980,
+    "range": "9-11",
+    "category": "men",
+    "image": "assets/products/IMG_4914.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MMON2504",
+    "name": "MMON2504",
+    "price": 4880,
+    "range": "9-11.5",
+    "category": "men",
+    "image": "assets/products/IMG_4915.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      },
+      {
+        "us": 11.5,
+        "cm": null
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WMON2501",
+    "name": "WMON2501",
+    "price": 4880,
+    "range": "6.5-9",
+    "category": "women",
+    "image": "assets/products/IMG_4920.JPG",
+    "sizes": [
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MFRE2610",
+    "name": "MFRE2610",
+    "price": 4680,
+    "range": "9-11",
+    "category": "men",
+    "image": "assets/products/IMG_5576.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MFRE2607",
+    "name": "MFRE2607",
+    "price": 4680,
+    "range": "9-12",
+    "category": "men",
+    "image": "assets/products/IMG_5577.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      },
+      {
+        "us": 11.5,
+        "cm": null
+      },
+      {
+        "us": 12.0,
+        "cm": null
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MATH2510",
+    "name": "MATH2510",
+    "price": 4680,
+    "range": "8-12",
+    "category": "men",
+    "image": "assets/products/IMG_5578.JPG",
+    "sizes": [
+      {
+        "us": 8.0,
+        "cm": 26
+      },
+      {
+        "us": 8.5,
+        "cm": 26.5
+      },
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      },
+      {
+        "us": 11.5,
+        "cm": null
+      },
+      {
+        "us": 12.0,
+        "cm": null
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MATH2608",
+    "name": "MATH2608",
+    "price": 4680,
+    "range": "9-11",
+    "category": "men",
+    "image": "assets/products/IMG_5579.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "MATH2606",
+    "name": "MATH2606",
+    "price": 4680,
+    "range": "9-11",
+    "category": "men",
+    "image": "assets/products/IMG_5580.JPG",
+    "sizes": [
+      {
+        "us": 9.0,
+        "cm": 27
+      },
+      {
+        "us": 9.5,
+        "cm": 27.5
+      },
+      {
+        "us": 10.0,
+        "cm": 28
+      },
+      {
+        "us": 10.5,
+        "cm": 28.5
+      },
+      {
+        "us": 11.0,
+        "cm": 29
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WATH2612",
+    "name": "WATH2612",
+    "price": 4680,
+    "range": "7-9",
+    "category": "women",
+    "image": "assets/products/IMG_5581.JPG",
+    "sizes": [
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WATH2611",
+    "name": "WATH2611",
+    "price": 4680,
+    "range": "7-9",
+    "category": "men",
+    "image": "assets/products/IMG_5582.JPG",
+    "sizes": [
+      {
+        "us": 7.0,
+        "cm": 25
+      },
+      {
+        "us": 7.5,
+        "cm": 25.5
+      },
+      {
+        "us": 8.0,
+        "cm": 26
+      },
+      {
+        "us": 8.5,
+        "cm": 26.5
+      },
+      {
+        "us": 9.0,
+        "cm": 27
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WMON2603",
+    "name": "WMON2603",
+    "price": 4880,
+    "range": "6-9",
+    "category": "women",
+    "image": "assets/products/IMG_5583.JPG",
+    "sizes": [
+      {
+        "us": 6.0,
+        "cm": 22.5
+      },
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WSIE2602",
+    "name": "WSIE2602",
+    "price": 3980,
+    "range": "6.5-9",
+    "category": "women",
+    "image": "assets/products/IMG_5584.JPG",
+    "sizes": [
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  },
+  {
+    "sku": "WSIE2609",
+    "name": "WSIE2609",
+    "price": 3980,
+    "range": "6.5-9",
+    "category": "women",
+    "image": "assets/products/IMG_5585.JPG",
+    "sizes": [
+      {
+        "us": 6.5,
+        "cm": 23
+      },
+      {
+        "us": 7.0,
+        "cm": 23.5
+      },
+      {
+        "us": 7.5,
+        "cm": 24
+      },
+      {
+        "us": 8.0,
+        "cm": 24.5
+      },
+      {
+        "us": 8.5,
+        "cm": 25
+      },
+      {
+        "us": 9.0,
+        "cm": 25.5
+      }
+    ],
+    "stock": true
+  }
+]
