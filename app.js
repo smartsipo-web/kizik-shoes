@@ -3,6 +3,7 @@ const KIZIK_CATALOG_API=KIZIK_API_BASE+'/kizik-catalog';
 const KIZIK_SUBMIT_API=KIZIK_API_BASE+'/kizik-submit-order';
 
 const PRODUCT_META=[
+  ['WJLB2603','assets/products/WJLB2603.jpg'],['WJLB2605','assets/products/WJLB2605.jpg'],['WJUL2505','assets/products/WJUL2505.jpg'],
   ['WFRE2607','assets/products/WFRE2607.jpg'],['WFRE2601','assets/products/WFRE2601.jpg'],['WSIE2607','assets/products/WSIE2607.jpg'],['WSIE2606','assets/products/WSIE2606.jpg'],['WSIE2603','assets/products/WSIE2603.jpg'],
   ['MATH2509','assets/products/MATH2509.jpg'],['MSIE2605','assets/products/MSIE2605.jpg'],['MSIE2604','assets/products/MSIE2604.jpg'],['MSIE2602','assets/products/MSIE2602.jpg'],
   ['MMON2504','assets/products/MMON2504.jpg'],['WMON2501','assets/products/WMON2501.jpg'],['MFRE2610','assets/products/MFRE2610.jpg'],['MFRE2607','assets/products/MFRE2607.jpg'],
