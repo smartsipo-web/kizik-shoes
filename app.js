@@ -29,7 +29,17 @@ const genderName=(sku)=>sku.startsWith('M')?'男鞋':sku.startsWith('W')?'女鞋
 const seriesName=(s)=>String(s).endsWith('ATH')?'雅典娜2.0系列':String(s).endsWith('FRE')?'跑鞋系列':String(s).endsWith('MON')?'摩納哥系列':String(s).endsWith('SIE')?'西恩納系列':s+' 系列';
 const cmTxt=(s)=>s.cm==null?`US ${s.us}｜CM 資料待補`:`US ${s.us}｜${s.cm} cm`;
 const money=n=>'$'+Number(n||0).toLocaleString('zh-TW');
-const salePrice=base=>Math.round(Number(base)*discountRate);
+const HEJI_GROUP_KEY='group-1789121841734';
+const HEJI_PRICES={2280:1700,2680:2000,3980:3000,4680:3500,4880:3500,5280:3900,6080:4500};
+const isHejiGroup=()=>sourceGroup?.group_key===HEJI_GROUP_KEY;
+const salePrice=base=>{
+  if(isHejiGroup()){
+    const price=HEJI_PRICES[Number(base)];
+    if(!Number.isFinite(price))throw new Error('unsupported_group_price');
+    return price;
+  }
+  return Math.round(Number(base)*discountRate);
+};
 const discountText=rate=>{
   const z=Math.round(Number(rate)*100)/10;
   return Number.isInteger(z)?`${z} 折`:`${z.toFixed(1)} 折`;
@@ -80,7 +90,7 @@ function renderActivity(){
   const title=document.querySelector('#activityTitle'),note=document.querySelector('#activityNote'),badge=document.querySelector('#activityDiscount');
   const bar=document.querySelector('#sourceBar'),srcTitle=document.querySelector('#sourceTitle'),hint=document.querySelector('#sourceHint');
   if(sourceGroup){
-    title.textContent=sourceGroup.name;note.textContent=sourceGroup.note||'團購活動進行中。';badge.hidden=false;badge.textContent=discountText(sourceGroup.discount_rate);
+    title.textContent=sourceGroup.name;note.textContent=sourceGroup.note||'團購活動進行中。';badge.hidden=false;badge.textContent=isHejiGroup()?'固定團購價':discountText(sourceGroup.discount_rate);
     bar.classList.add('group');srcTitle.textContent=`團購入口｜${sourceGroup.name}`;hint.textContent=sourceGroup.ends_at?`截止：${new Date(sourceGroup.ends_at).toLocaleString('zh-TW')}`:'此訂單會記錄團購來源';
   }else{
     title.textContent='目前活動';note.textContent=generalActivity||'目前無特別活動。';badge.hidden=true;badge.textContent='';bar.classList.remove('group');srcTitle.textContent='一般客戶訂購';hint.textContent='一般訂購入口';
@@ -101,7 +111,7 @@ function render(){
   document.querySelector('#productCount').textContent=`共 ${list.length} 款商品`;
   for(const p of list){
     const displayPrice=salePrice(p.price);
-    const priceHtml=discountRate<1?`<del>${money(p.price)}</del>${money(displayPrice)}<span class="discountTag">${discountText(discountRate)}</span>`:money(p.price);
+    const priceHtml=(isHejiGroup()||discountRate<1)?`<del>${money(p.price)}</del>${money(displayPrice)}<span class="discountTag">${isHejiGroup()?'合濟團購價':discountText(discountRate)}</span>`:money(p.price);
     const d=document.createElement('div');d.className='card';
     d.innerHTML=`<div class="photo"><img src="${p.image}" alt="${p.sku}" loading="lazy"></div><div class="body"><div class="seriesBadge">${seriesName(p.series)}</div><div class="sku">${p.sku}</div><div class="small">${genderName(p.sku)}｜US ${p.range}</div><div class="price">${priceHtml}</div><select class="select"><option value="">選擇尺寸</option>${p.sizes.map(s=>{const q=inventory[p.sku]?.[String(s.us)]??0;return `<option value="${s.us}" ${q<=0?'disabled':''}>${cmTxt(s)}${q<=0?'｜售完':''}</option>`}).join('')}</select><div class="cm">選尺寸後顯示對應公分數</div><div class="row"><input class="qty" type="number" min="1" value="1"><button class="add">加入訂單</button></div></div>`;
     const sel=d.querySelector('.select'),cm=d.querySelector('.cm'),qty=d.querySelector('.qty'),addBtn=d.querySelector('.add');
@@ -139,7 +149,7 @@ async function checkout(){
     const r=await fetch(KIZIK_SUBMIT_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}),d=await r.json();
     if(!r.ok||!d.success){const msg=String(d.error||'');if(msg.startsWith('insufficient_stock:'))throw new Error('部分尺寸庫存不足，請重新選擇');if(msg==='group_ended')throw new Error('此團購活動已截止，請改用一般訂購入口');throw new Error(d.error||'訂單送出失敗');}
     const submittedItems=cart.map(i=>({...i}));
-    const submittedTotal=submittedItems.reduce((a,i)=>a+Number(i.price)*Number(i.qty),0);
+    const submittedTotal=Number(d.total);
     const detailLines=submittedItems.map(i=>`${i.sku}｜US ${i.size}${i.cm?' / '+i.cm+'cm':''} × ${i.qty}｜${money(Number(i.price)*Number(i.qty))}`).join('\n');
     cart=[];save();updateCart();await syncCatalog();render();
     alert(`訂單已送出！\n訂單編號：${d.order_no}${d.source_name&&d.source_name!=='一般客戶'?`\n團購：${d.source_name}`:''}\n\n訂購明細：\n${detailLines}\n\n共 ${submittedItems.reduce((a,i)=>a+Number(i.qty),0)} 雙｜合計 ${money(submittedTotal)}\n\n歡迎螢幕截圖留存`);closeCart();
